@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="locomotive.css">
+
+</head>
+
+<body>
+    <div class="minicircle">
+
+    </div>
+    <div id="main" data-scroll-container>
+        <div id="hero">
+            <div id="nav">
+
+                <a href="">Cynthia Ugwu</a>
+                <h4>Menu+</h4>
+
+            </div>
+            <div id="heading">
+                <div class="bounding">
+
+                    <h1 class="boundingelem">Product</h1>
+                </div>
+                <div class="blocktest">
+                    <div class="bounding">
+                        <h1 style="margin-left: 140px;" class="boundingelem">designer</h1>
+
+                    </div>
+                    <div class="bounding">
+
+                        <h5 id="h5-of-hero" class="boundingelem">Based in tronto </h5>
+                    </div>
+
+                </div>
+            </div>
+            <div class="chottiheading">
+                <h5>avaible for freelance</h5>
+                <h5>Work from may 23</h5>
+            </div>
+            <div class="herofooter">
+                <div class="bounding">
+
+                    <a href="#" class="boundingelem">Previously worked at YML<i class="ri-arrow-right-up-line"></i></a>
+                </div>
+                <div class="bounding">
+
+                    <a href="#" class="boundingelem">Protopie Ambassadors<i class="ri-arrow-right-up-line"></i></a>
+                </div>
+
+                <div class="iconset">
+                    <div class="circle"><i class="ri-arrow-down-line"></i></div>
+                    <div class="circle"><i class="ri-arrow-down-line"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="second-page">
+            <div class="elem">
+                <img src="/images/plug.png" alt="">
+                <h1>the plug</h1>
+                <h5>2022</h5>
+            </div>
+            <div class="elem">
+                <img src="/images/ixperience.png" alt="">
+                <h1>Ixperience</h1>
+                <h5>2022</h5>
+
+            </div>
+            <div class="elem" style="  ">
+                <img src="images/hudu.png" alt="">
+                <h1>HUDu</h1>
+                <h5>2022</h5>
+
+            </div>
+
+        </div>
+        <div class="about">
+            <img src="/images/cynthia.png" alt="">
+            <div class="textabout">
+                <h5>(about me)
+
+                </h5>
+                <p>I'm a product designer with a passion for creating products that not only look good but also solve
+                    real problems. When I'm not sketching ideas on paper, you can find me binge-watching a Netflix
+                    series or playing video games. My design philosophy is simple: make it visually appealing,
+                    functional, and bring a smile to people's faces. I'm the designer you want on your team if you want
+                    to make people say 'I need that in my life!'.</p>
+                <a href="">Let's talk</a>
+            </div>
+        </div>
+        <div class="subscribe">
+            <h5>(Forget to MEntion)</h5>
+            <h3>Subscribe to my youtube channal<i class="ri-arrow-right-up-line"></i></h3>
+
+        </div>
+        <div class="footer">
+            <div class="footerleft">
+                <h5>2023 &copy;</h5>
+                <h5>0:05 Am Est</h5>
+            </div>
+            <div class="footeright">
+                <a href="">dribbble</a>
+                <a href="">instagram</a>
+                <a href="">linkedin</a>
+                <a href="">twitter</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/locomotive-scroll"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const scroll = new LocomotiveScroll({
+            el: document.querySelector('#main'),
+            smooth: true
+        });
+        function firstpageanimation() {
+            var tl = gsap.timeline()
+            tl.from("#nav", {
+                y: '-10',
+                opacity: 0,
+                ease: Expo.easeInOut,
+                duration: 2,
+            })
+                .to(".boundingelem", {
+                    y: 0,
+                    ease: Expo.EaseInOut,
+                    duration: 2,
+                    delay: -1,
+                    stagger: .2
+                })
+                .from('.herofooter', {
+                    y: '-10',
+                    opacity: 0,
+                    delay: -1,
+                    ease: Expo.easeInOut,
+                    duration: 2,
+                })
+        }
+        firstpageanimation()
+
+        function circlemoving() {
+    var xscale = 1;
+    var yscale = 1;
+    var xprev = 0;
+    var yprev = 0;
+    var timeout; 
+
+    window.addEventListener('mousemove', function(dets) {
+        clearTimeout(timeout); 
+
+        var xdiff = dets.clientX - xprev;
+        var ydiff = dets.clientY - yprev;
+
+        xprev = dets.clientX;
+        yprev = dets.clientY;
+
+        let xscale = gsap.utils.clamp(.8, 1.2, xdiff);
+        let yscale = gsap.utils.clamp(.8, 1.2, ydiff);
+
+        circlemousefollower(xscale, yscale);
+
+        timeout = setTimeout((e) => { 
+            let minicircle = document.getElementsByClassName('minicircle')[0];
+            if (minicircle) { 
+                minicircle.style.transform = `translate(${dets.clientX}px, ${dets.clientY}px) scale(1,1)`;
+                minicircle.style.display = 'unset'; 
+            }
+        }, 100);
+    });
+}
+        circlemoving()
+
+    </script>
+
+</body>
+
+</html>
